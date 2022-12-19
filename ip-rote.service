@@ -1,0 +1,15 @@
+[Unit]
+Description=Config ip-route
+Wants=multi-user.target
+Requires=multi-user.target
+
+[Service]
+User=root
+Type=simple
+# sandbox.sh п-- применятся новые правила
+ExecStart=/opt/sandbox.sh
+# restore.sh -- применится бекап старых парвила
+FailureAction=/opt/restore.sh
+
+[Install]
+WantedBy=multi-user.target
